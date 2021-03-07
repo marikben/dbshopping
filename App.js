@@ -18,6 +18,9 @@ export default function App() {
 
 
   const saveItem = () => {
+    //to clear the input fields
+    setAmount('')
+    setProduct('')
     db.transaction(tx => {
         tx.executeSql('insert into products (amount, product) values (?, ?);', [amount, product]);    
       }, null, updateList
@@ -31,9 +34,7 @@ export default function App() {
       ); 
     });
   }
-  console.log(amount)
-  console.log(product)
-  console.log(products)
+ 
   const deleteItem = (id) => {
     db.transaction(
       tx => {
